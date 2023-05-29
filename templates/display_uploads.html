@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Detection</title>
+
+    <!-- For development -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='index.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <nav id="navbar">
+        <span id="logo_wrapper">
+            <img src="{{ url_for('static', filename='jssstu_logo.jpg') }}" alt="" class="logo">
+            <svg fill="#ffffff" height="200px" width="200px" version="1.1" id="collab_icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 460.775 460.775" xml:space="preserve" stroke="#ffffff">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path d="M285.08,230.397L456.218,59.27c6.076-6.077,6.076-15.911,0-21.986L423.511,4.565c-2.913-2.911-6.866-4.55-10.992-4.55 c-4.127,0-8.08,1.639-10.993,4.55l-171.138,171.14L59.25,4.565c-2.913-2.911-6.866-4.55-10.993-4.55 c-4.126,0-8.08,1.639-10.992,4.55L4.558,37.284c-6.077,6.075-6.077,15.909,0,21.986l171.138,171.128L4.575,401.505 c-6.074,6.077-6.074,15.911,0,21.986l32.709,32.719c2.911,2.911,6.865,4.55,10.992,4.55c4.127,0,8.08-1.639,10.994-4.55 l171.117-171.12l171.118,171.12c2.913,2.911,6.866,4.55,10.993,4.55c4.128,0,8.081-1.639,10.992-4.55l32.709-32.719 c6.074-6.075,6.074-15.909,0-21.986L285.08,230.397z"></path>
+                </g>
+            </svg>
+            <img src="{{ url_for('static', filename='jssaher_logo.jpg') }}" alt="" class="logo">
+        </span>
+        <h1>Breast Cancer Detection</h1>
+        <span></span>
+    </nav>
+
+    <div id="layout">
+        <div id="interface_div">
+            <form method="post" action="/upload" enctype="multipart/form-data" id="upload_form">
+                <label id="upload_scans">
+                    <input type="file" accept=".dcm" name="file" id="file_picker">
+                    Select files
+                </label>
+                <p id="files_list">
+                    No scans selected
+                </p>
+            </form>
+
+            <form method='post' action="/predict?img_url={{ url }}" id="predict_form">
+            </form>
+
+            <div id="button_div">
+                <input type="submit" value="Upload" class="button_type1" form="upload_form">
+                <input type="submit" value="Predict" class="button_type1" form="predict_form">
+            </div>
+        </div>
+        <div id="display_div">
+            <!-- For builds -->
+            <img src="{{ url }}" alt="" id="display_image">
+        </div>
+    </div>
+    <!-- For builds -->
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>

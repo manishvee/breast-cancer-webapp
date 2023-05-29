@@ -1,0 +1,6 @@
+runtime: python310
+instance_class: F4
+automatic_scaling:
+  target_cpu_utilization: 0.9
+  min_idle_instances: 1
+entrypoint: gunicorn -b :$PORT main:app
